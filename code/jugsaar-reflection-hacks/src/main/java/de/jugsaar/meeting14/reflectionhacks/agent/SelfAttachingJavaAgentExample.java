@@ -14,6 +14,8 @@ import java.util.jar.Manifest;
 
 /**
  * Created by tom on 27.07.15.
+ *
+ * Run with -noverify as JVM arguments!
  */
 public class SelfAttachingJavaAgentExample {
 

@@ -11,31 +11,32 @@ public class Ex004_ReadWriteObjectState {
 
     static class Person {
 
-        private final String firstname;
-        private final String lastname;
+        private static CharSequence PREFIX = "Person>";
 
-        public Person(String firstname, String lastname) {
-            this.firstname = firstname;
-            this.lastname = lastname;
+        private final String name;
+
+        public Person(String name) {
+            this.name = name;
         }
 
         public String toString() {
-            return "Person{" + "firstname='" + firstname + '\'' + ", lastname='" + lastname + '\'' + '}';
+            return PREFIX + "{" + "name='" + name + '\'' + '}';
         }
     }
 
     public static void main(String[] args) throws Exception {
 
-        Person person = new Person("Fritz", "Katz");
+        Person person = new Person("Fritz Katz");
         System.out.println(person);
 
-        Field firstnameField = person.getClass().getDeclaredField("firstname");
-        firstnameField.setAccessible(true);
-        firstnameField.set(person, "Foo");
+        Field prefixField = person.getClass().getDeclaredField("PREFIX");
+        prefixField.setAccessible(true);
+        prefixField.set(null, "Räuber>");
 
-        Field lastnameField = person.getClass().getDeclaredField("lastname");
-        lastnameField.setAccessible(true);
-        lastnameField.set(person, "Foo");
+        Field nameField = person.getClass().getDeclaredField("name");
+        nameField.setAccessible(true);
+        nameField.set(person, "Hotzenplotz");
+
         System.out.println(person);
     }
 }

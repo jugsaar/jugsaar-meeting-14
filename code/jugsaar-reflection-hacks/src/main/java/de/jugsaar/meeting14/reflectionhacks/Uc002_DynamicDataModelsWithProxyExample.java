@@ -37,13 +37,13 @@ public class Uc002_DynamicDataModelsWithProxyExample {
     }
 
 
-    static class DataModelWrapper extends AbstractInvocationHandler { //AbstractInvocationHandler from google guava
+    static class ModelWrapper extends AbstractInvocationHandler { //AbstractInvocationHandler from google guava
 
         private final Class<?> modelType;
 
         private final Map<String, Object> propertyValues = new HashMap<String, Object>();
 
-        public DataModelWrapper(Class<?> modelType) {
+        public ModelWrapper(Class<?> modelType) {
             this.modelType = modelType;
         }
 
@@ -79,7 +79,8 @@ public class Uc002_DynamicDataModelsWithProxyExample {
     static class ModelProxyFactory {
 
         public static <M> M createModel(Class<M> modelType) {
-            return Reflection.newProxy(modelType, new DataModelWrapper(modelType));
+            //Reflection google guava
+            return Reflection.newProxy(modelType, new ModelWrapper(modelType));
         }
 
         public static <M> M createModel(M... args) {

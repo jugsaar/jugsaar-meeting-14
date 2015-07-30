@@ -27,6 +27,31 @@ public class Hck004_ChangeStaticFinalFieldExample {
 		Example.printValue();
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	private static void hack() throws Exception {
 		setStaticFinalField(Example.class.getDeclaredField("value"), "gaga");
 	}

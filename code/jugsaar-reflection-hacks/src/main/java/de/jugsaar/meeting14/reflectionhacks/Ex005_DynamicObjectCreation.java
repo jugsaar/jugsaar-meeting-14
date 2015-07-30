@@ -14,6 +14,7 @@ public class Ex005_DynamicObjectCreation {
 
         System.out.printf("Via new instance: %s%n", ArrayList.class.newInstance());
 
+        //Tipp use (&cache constructor)
         System.out.printf("Via constructor: %s%n", ArrayList.class.getConstructor(Collection.class).newInstance(Arrays.asList(1, 2, 3, 4)));
     }
 }

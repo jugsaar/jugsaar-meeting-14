@@ -14,6 +14,10 @@ public class Hck002_AutoBoxing_IntegerHack {
 
         int sum = ((Integer)42) + 1;
         System.out.println(sum);
+
+        unhack();
+
+        System.out.println((Integer) 42);
     }
 
     static void hack() throws Exception {

@@ -4,47 +4,43 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-public class Ex001_SimpleIntrospectionExample {
+public class Ex001_IntrospectionExample {
 
+    static class Obj {
 
-    static class Base {
-
-        private String field0;
-        protected int field1;
+        private String field0 = "hallo";
+        protected int field1 = 42;
 
         public String someMethod() {
             return null;
         }
     }
 
-    static class Derived extends Base {
-
-        private double field2;
-
-        public Derived(double field2){
-            this.field2 = field2;
-        }
-
-        public static void someStaticMethod() {
-        }
-    }
-
-
     public static void main(String[] args) throws Exception {
 
-        Base o = new Derived(0xDEADC0DE);
+        Obj o = new Obj();
 
         ObjectInspector.inspect(o);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     static class ObjectInspector {
 
         public static void inspect(Object o) throws Exception {
-            log("Inspecting object instance: %s%n", o);
-            inspect(o.getClass());
-        }
 
-        private static void inspect(Class<? extends Object> clazz) throws Exception {
+            log("Inspecting object instance: %s%n", o);
+            Class<?> clazz = o.getClass();
 
             log("%nInspecting class: %s%n", clazz);
 
@@ -55,7 +51,9 @@ public class Ex001_SimpleIntrospectionExample {
 
             log("%nFields:%n");
             for (Field field : clazz.getDeclaredFields()) {
-                log("declared field: %s%n", field);
+
+                field.setAccessible(true);
+                log("declared field: %s with value: %s%n", field, field.get(o));
             }
 
             log("%nMethods%n");

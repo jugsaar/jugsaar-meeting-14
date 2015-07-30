@@ -19,8 +19,8 @@ public class Uc004_CallDefaultMethodViaReflection {
     public static void main(String[] args) throws Throwable {
 
         Hello target =
-                new Hello() {};
-//        (Hello) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{Hello.class}, (Object proxy, Method method, Object[] arguments) -> null);
+//                new Hello() {};
+        (Hello) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{Hello.class}, (Object proxy, Method method, Object[] arguments) -> null);
 
         Method method = Hello.class.getMethod("hello");
 
@@ -50,19 +50,19 @@ public class Uc004_CallDefaultMethodViaReflection {
 
 
 
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
         Object result = MethodHandles.lookup()
                 .in(method.getDeclaringClass())
                 .unreflectSpecial(method, method.getDeclaringClass())
                 .bindTo(target)
                 .invokeWithArguments();
 
-//        System.out.println(result); //Hello
+        System.out.println(result); //Hello
     }
 
 }

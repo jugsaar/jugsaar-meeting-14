@@ -10,7 +10,7 @@ public class Ex005a_DynamicObjectCreation {
     public static class Foo extends FileInputStream {
 
         public Foo() throws FileNotFoundException {
-            super("abc.xml");
+            super("abc.xml"); //throws Exception because abc.xml doesn't exist
         }
     }
 

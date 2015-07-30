@@ -10,9 +10,11 @@ public class Hck003_ThrowUncheckedException {
     public static void main(String[] args) {
 
         //throw new RuntimeException("");
-        //throw new IOException("");
+//        throw new IOException("");
 
-        //Thrower.throwException(new IOException("something went wrong!"));
+//        Thrower.throwException(new IOException("something went wrong!"));
+        throwViaGenerics(new IOException("something went wrong!"));
+
     }
 
     static class Thrower{
@@ -70,7 +72,7 @@ public class Hck003_ThrowUncheckedException {
 
 
 
-    //throwViaGenerics(new IOException("something went wrong!"));
+    //
 
 
     public static <T extends Throwable> void throwViaGenerics(Throwable t) throws T{

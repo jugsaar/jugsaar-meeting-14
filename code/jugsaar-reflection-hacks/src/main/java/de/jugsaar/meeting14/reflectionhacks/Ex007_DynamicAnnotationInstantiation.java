@@ -17,6 +17,7 @@ public class Ex007_DynamicAnnotationInstantiation {
     static class X {
     }
 
+    @Example("default")
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.TYPE)
     @interface Example {
@@ -33,6 +34,8 @@ public class Ex007_DynamicAnnotationInstantiation {
 
         System.out.printf("Traditional annotation creation: %s%n",
                 X.class.getAnnotation(Example.class));
+        System.out.printf("Traditional annotation creation: %s%n",
+                Example.class.getAnnotation(Example.class));
 
         System.out.printf("Custom annotation creation: %s%n",
                 createAnnotationInstance(Collections.singletonMap("value", "required"), Example.class));
